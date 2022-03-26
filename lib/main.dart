@@ -8,7 +8,7 @@ import 'package:note/ui/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  log("log message");
+  log("run app");
   runApp(const MyApp());
 }
 

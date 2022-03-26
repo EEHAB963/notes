@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:note/ui/build/biuld_floating_action_button_task.dart';
 import 'package:note/ui/build/biuld_task_widget.dart';
-import 'package:note/ui/widgets/floton_acshin_boton.dart';
+
+import '../build/biuld_floating_action_button_taska.dart';
 
 class TaskTap extends StatelessWidget {
   const TaskTap({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class TaskTap extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Column(
-          children: [
+          children: const [
             Text(
               ' Tasker',
               style: TextStyle(fontSize: 35),
@@ -21,7 +21,7 @@ class TaskTap extends StatelessWidget {
           ],
         ),
       ),
-      body: BiuldTaskWidget(),
+      body: const BiuldTaskWidget(),
     );
   }
 }
