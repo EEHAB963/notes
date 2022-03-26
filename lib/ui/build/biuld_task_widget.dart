@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:note/modil/model_task.dart';
 import 'package:note/provider/taske_provider.dart';
 import 'package:note/ui/widgets/task_wedgit.dart';
 import 'package:provider/provider.dart';
+
+import '../screens/contant_task.dart';
 
 class BiuldTaskWidget extends StatelessWidget {
   const BiuldTaskWidget({Key? key}) : super(key: key);
@@ -42,23 +45,42 @@ class BiuldTaskWidget extends StatelessWidget {
               flex: 4,
               child: Container(
                 height: 100,
-                child: provider.dataTask.length == null
-                    ? const Center(
-                        child: Text('NO Tasks'),
-                      )
-                    : ListView.builder(
-                        itemCount: provider.dataTask.length,
+                child: FutureBuilder<List<ModelTask>>(
+                  future: provider.getData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.builder(
+                        itemCount: 2,
+                        // provider.dataTask.length,
                         itemBuilder: (context, index) => TaskWedget(
-                          color: provider.checkbox == true
-                              ? Colors.grey
-                              : Colors.blue,
-                          value: provider.checkbox,
+                          modelTask: provider.dataTask[index],
                           onChanged: () {
                             print('build Chicbox');
                             provider.valueCheckbox();
                           },
+                          onTap: () {
+                            provider.on = true;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ContantTask(
+                                    modelTask: provider.dataTask[index],
+                                  ),
+                                ));
+                          },
                         ),
-                      ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('NO Tasks'),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                ),
               ),
             ),
           ],
