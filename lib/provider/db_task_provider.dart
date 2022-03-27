@@ -29,7 +29,7 @@ class DbTaskProvider {
 CREATE TABLE $tabelTaskName (
   $columnTaskID $idType,
   $columnTaskContent $textType,
-  $columnTaskInt $boolType
+ 
 )
 ''');
   }

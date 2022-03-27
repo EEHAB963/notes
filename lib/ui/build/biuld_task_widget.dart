@@ -50,23 +50,14 @@ class BiuldTaskWidget extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
-                        itemCount: 2,
+                        itemCount: provider.dataTask.length,
                         // provider.dataTask.length,
                         itemBuilder: (context, index) => TaskWedget(
+                          id: provider.dataTask[index].id,
                           modelTask: provider.dataTask[index],
                           onChanged: () {
                             print('build Chicbox');
                             provider.valueCheckbox();
-                          },
-                          onTap: () {
-                            provider.on = true;
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ContantTask(
-                                    modelTask: provider.dataTask[index],
-                                  ),
-                                ));
                           },
                         ),
                       );

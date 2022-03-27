@@ -5,7 +5,7 @@ import 'package:note/provider/db_task_provider.dart';
 class TaskeProvider extends ChangeNotifier {
   List<ModelTask> dataTask = [];
   bool isDan = true;
-  String? tasks = 'hh';
+  String? tasks;
   int? id;
   final GlobalKey<FormState> key = GlobalKey<FormState>();
   bool on = true;
@@ -26,7 +26,6 @@ class TaskeProvider extends ChangeNotifier {
   addData() {
     DbTaskProvider.instanceTAsk.cerateUser(
       ModelTask(
-        inte: isDan,
         content: tasks,
       ),
     );
@@ -35,10 +34,10 @@ class TaskeProvider extends ChangeNotifier {
 
   updatData() {
     print('upDataTasks');
+    print('id of list tasks =${dataTask[id!].id}');
 
     DbTaskProvider.instanceTAsk.updareUser(
       ModelTask(
-        inte: isDan,
         content: tasks,
         id: dataTask[id!].id!,
       ),

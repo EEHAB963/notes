@@ -22,7 +22,14 @@ class ContantTask extends StatelessWidget {
             child: ListView(
               children: [
                 Text('What is the task?'),
-                TextFormField(),
+                Form(
+                  key: provider.key,
+                  child: TextFormField(
+                    onSaved: (newValue) {
+                      provider.tasks = newValue;
+                    },
+                  ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -34,7 +41,7 @@ class ContantTask extends StatelessWidget {
                     title: provider.on == false
                         ? IconButton(
                             onPressed: () {
-                              showDatePicker(
+                              var datePicker = showDatePicker(
                                       context: context,
                                       initialDate: DateTime.now(),
                                       firstDate: DateTime(2022),
@@ -54,7 +61,7 @@ class ContantTask extends StatelessWidget {
                     title: provider.on == false
                         ? IconButton(
                             onPressed: () {
-                              showTimePicker(
+                              var timePicker = showTimePicker(
                                   context: context,
                                   initialTime: TimeOfDay.now());
                             },
