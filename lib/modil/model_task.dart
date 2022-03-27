@@ -10,7 +10,7 @@ class ModelTask {
   ///dart to json
   Map<String, dynamic> toMap() => {
         columnTaskID: id,
-        columnTaskInt: inte,
+        //columnTaskInt: inte,
         columnTaskContent: content,
       };
 
@@ -18,7 +18,7 @@ class ModelTask {
   factory ModelTask.fromMap(Map<String, dynamic> fromMap) {
     return ModelTask(
       id: fromMap[columnTaskID],
-      inte: fromMap[columnTaskInt],
+      //inte: fromMap[columnTaskInt],
       content: fromMap[columnTaskContent],
     );
   }

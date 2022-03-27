@@ -19,6 +19,7 @@ class BuildFlotonActionButonSaveTask extends StatelessWidget {
           style: TextStyle(color: Colors.white, fontSize: 20),
         )),
         onTap: () {
+          provider.key.currentState!.save();
           if (provider.on == true) {
             log('updata');
             provider.updatData();
@@ -26,6 +27,7 @@ class BuildFlotonActionButonSaveTask extends StatelessWidget {
             log('addData');
             provider.addData();
           }
+          Navigator.pop(context);
         },
       );
     });
